@@ -1,19 +1,16 @@
 const path = require('path');
-const webpack = require('webpack')
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: 'development',
   devtool: 'source-map',
   entry: './src/index.js',
   output: {
     filename: '[name].js',
     path: path.join(__dirname, 'dist')
   },
-  devServer: {
-    contentBase: './dist',
-    hot: true
-  },
+
   module: {
     rules: [{
       test: /\.m?js$/,
@@ -24,18 +21,37 @@ module.exports = {
       ]
     },
     {
+      test: /\.css$/i,
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            esModule: true
+          }
+        },
+        'css-loader',
+        'postcss-loader'
+      ]
+    },
+    {
       test: /\.s[ac]ss$/i,
       use: [
-        'style-loader',
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            esModule: true
+          }
+        },
         'css-loader',
         {
           loader: 'sass-loader',
           options: {
             // Prefer `dart-sass`
-            implementation: require('sass'),
-          },
+            implementation: require('sass')
+          }
         },
-      ],
+        'postcss-loader'
+      ]
     },
     {
       test: /\.(ttf|otf|ttc|eot|woff|woff2|font|fon)$/,
@@ -49,17 +65,22 @@ module.exports = {
         {
           loader: 'url-loader',
           options: {
-            limit: 8192,
-          },
-        },
-      ],
+            limit: 8192
+          }
+        }
+      ]
     }
     ]
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+      ignoreOrder: false
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: 'index.html'
     })
   ]
-}
+};
