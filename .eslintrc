@@ -11,6 +11,7 @@
     "linebreak-style": 2,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "global-require": 0,
+    "no-debugger": "warn",
     "comma-dangle": ["error", "never"],
     "react/prefer-stateless-function": [0, { "ignorePureComponents": true }]
   }

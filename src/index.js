@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import logo from './images/webpack.svg';
 
+debugger
+console.log(1);
+
 class Index extends Component {
   render() {
     return (
