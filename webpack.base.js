@@ -74,11 +74,9 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // all options are optional
       filename: '[name].css',
       chunkFilename: '[id].css',
-      ignoreOrder: false // Enable to remove warnings about conflicting order
+      ignoreOrder: false
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
