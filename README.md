@@ -15,5 +15,5 @@ yarn serve
 
 构建发布包：
 ```
-yarn build:prod
+yarn build
 ```
