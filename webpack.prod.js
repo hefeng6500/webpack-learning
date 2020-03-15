@@ -9,7 +9,7 @@ module.exports = merge(baseWebpackConfig, {
   optimization: {
     splitChunks: {
       chunks: 'async',
-      minSize: 30000,
+      minSize: 0,
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
@@ -24,6 +24,11 @@ module.exports = merge(baseWebpackConfig, {
           minChunks: 2,
           priority: -20,
           reuseExistingChunk: true
+        },
+        commons: {
+          name: 'commons',
+          chunks: 'initial',
+          minChunks: 2 // 设置为 1 可以查看打包效果
         }
       }
     }
@@ -45,5 +50,6 @@ module.exports = merge(baseWebpackConfig, {
       ]
     }),
     new CleanWebpackPlugin()
-  ]
+  ],
+  stats: 'normal'
 });

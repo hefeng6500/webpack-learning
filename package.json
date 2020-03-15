@@ -31,6 +31,7 @@
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
     "px2rem-loader": "^0.1.9",
+    "raw-loader": "0.5.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "sass": "^1.26.3",
@@ -44,10 +45,12 @@
     "webpack-dev-server": "^3.10.3",
     "webpack-merge": "^4.2.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lib-flexible": "^0.3.2"
+  },
   "scripts": {
     "serve": "webpack-dev-server --config webpack.dev.js --progress --colors",
-    "build:prod": "webpack --config webpack.prod.js --progress --colors",
+    "build": "webpack --config webpack.prod.js --progress --colors",
     "watch": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

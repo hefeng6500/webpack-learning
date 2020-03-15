@@ -30,7 +30,15 @@ module.exports = {
           }
         },
         'css-loader',
-        'postcss-loader'
+        'postcss-loader',
+        {
+          loader: 'px2rem-loader',
+          // options here
+          options: {
+            remUni: 75,
+            remPrecision: 8
+          }
+        }
       ]
     },
     {
@@ -50,7 +58,15 @@ module.exports = {
             implementation: require('sass')
           }
         },
-        'postcss-loader'
+        'postcss-loader',
+        {
+          loader: 'px2rem-loader',
+          // options here
+          options: {
+            remUni: 75,
+            remPrecision: 8
+          }
+        }
       ]
     },
     {
@@ -80,7 +96,8 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      filename: 'index.html'
+      filename: 'index.html',
+      chunk: ['common']
     })
   ]
 };
