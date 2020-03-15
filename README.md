@@ -1,4 +1,6 @@
 # webpack-learning
+
+this is single page webpack config
 learning webpack
 
 安装依赖包：
