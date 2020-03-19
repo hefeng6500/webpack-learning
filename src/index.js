@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import './index.scss';
 import logo from './images/webpack.svg';
-import common from './common';
+import common from './common/index';
 
 class Index extends Component {
   constructor() {
@@ -27,23 +27,16 @@ class Index extends Component {
       <div>
         <h1 className="searhText">
           hello world!
-          {
-            common()
-          }
+          {common()}
         </h1>
-        <h2>
-          {
-            Text ? <Text /> : null
-          }
-        </h2>
+        <h2>{Text ? <Text /> : null}</h2>
         <img alt="" className="imgStyle" src={logo} />
-        <button type="button" onClick={this.loadComponent.bind(this)}>按钮</button>
+        <button type="button" onClick={this.loadComponent.bind(this)}>
+          按钮
+        </button>
       </div>
     );
   }
 }
 
-ReactDOM.render(
-  <Index />,
-  document.getElementById('app')
-);
+ReactDOM.render(<Index />, document.getElementById('app'));
